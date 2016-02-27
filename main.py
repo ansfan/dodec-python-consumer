@@ -34,8 +34,8 @@ def parse(infilePath, outfilePath, scale):
 
     fig, ax = plt.subplots()  #create figure and axes
     ax.set_aspect('equal')
-    ax.set_xlim(0, 100)
-    ax.set_ylim(0, 100)
+    ax.set_xlim(0, float(w))
+    ax.set_ylim(0, float(w))
 
     ax.scatter(x1, y1)
 
