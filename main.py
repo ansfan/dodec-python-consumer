@@ -23,7 +23,7 @@ def parse(infilePath, outfilePath, scale):
         print(led.to_string())
 
     plotter.plot_cartesian(leds, [], float(w), float(h))
-    plotter.plot_polar(leds, [], float(w), float(h))
+    #plotter.plot_polar(leds, [], float(w), float(h))
 
     return
 

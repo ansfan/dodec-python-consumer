@@ -12,14 +12,16 @@ def plot_cartesian(leds, colors, w=100, h=100):
     x1 = [led.x for led in leds]
     y1 = [led.y for led in leds]
     colors = np.random.rand(N)
+    colors1 = np.random.rand(181)
     area = np.pi * (15 * np.random.rand(N))**2  # 0 to 15 point radiuses
+    area1 = [led.area for led in leds]
 
     fig, ax = plt.subplots()  #create figure and axes
     ax.set_aspect('equal')
     ax.set_xlim(0, float(w))
     ax.set_ylim(0, float(w))
 
-    ax.scatter(x1, y1)
+    ax.scatter(x1, y1, c=colors1, s=area1)
 
     plt.show()
 
