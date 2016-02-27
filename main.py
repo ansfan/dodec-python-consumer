@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 import sys, getopt
 import numpy as np
 from LED import LED
-
-
+import plotter as plotter
 
 
 def parse(infilePath, outfilePath, scale):
@@ -23,27 +22,8 @@ def parse(infilePath, outfilePath, scale):
     for led in leds:
         print(led.to_string())
 
-
-    N = 50
-    x = np.random.rand(N)
-    y = np.random.rand(N)
-    x1 = [led.x for led in leds]
-    y1 = [led.y for led in leds]
-    colors = np.random.rand(N)
-    area = np.pi * (15 * np.random.rand(N))**2  # 0 to 15 point radiuses
-
-    fig, ax = plt.subplots()  #create figure and axes
-    ax.set_aspect('equal')
-    ax.set_xlim(0, float(w))
-    ax.set_ylim(0, float(w))
-
-    ax.scatter(x1, y1)
-
-
-    # plt.scatter(x1, y1)
-    # plt.scatter(x, y, s=area, c=colors, alpha=0.5)
-
-    plt.show()
+    plotter.plot_cartesian(leds, [], float(w), float(h))
+    plotter.plot_polar(leds, [], float(w), float(h))
 
     return
 
