@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7968682e-da43-4105-825c-609300b78fbc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Plotter2.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Plotter3.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Raindrops.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plotter.py" afterPath="$PROJECT_DIR$/plotter.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Raindrops.py" afterPath="$PROJECT_DIR$/Raindrops.py" />
     </list>
     <ignored path="dodec-python-consumer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,10 +28,9 @@
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="27" />
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <element signature="e#23#54#0" expanded="true" />
-                <element signature="e#190#717#0" expanded="true" />
                 <element signature="e#741#1523#0" expanded="true" />
               </folding>
             </state>
@@ -45,14 +40,14 @@
       <file leaf-file-name="Raindrops.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Raindrops.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5343602">
-              <caret line="75" column="23" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.3127962">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
                 <element signature="e#1#144#1" expanded="true" />
                 <element signature="e#145#163#0" expanded="true" />
-                <element signature="e#354#670#0" expanded="true" />
-                <element signature="e#694#1476#0" expanded="true" />
-                <element signature="e#2571#3488#0" expanded="true" />
+                <element signature="e#376#692#0" expanded="true" />
+                <element signature="e#716#1498#0" expanded="true" />
+                <element signature="e#3010#4400#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -191,10 +186,10 @@
         <entry file="file://$PROJECT_DIR$/plotter.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
                 <element signature="e#23#54#0" expanded="true" />
-                <element signature="e#304#731#0" expanded="true" />
+                <element signature="e#777#913#0" expanded="true" />
                 <element signature="e#2052#2626#0" expanded="true" />
                 <element signature="e#2687#3317#0" expanded="true" />
                 <element signature="e#3351#3774#0" expanded="true" />
@@ -591,21 +586,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/Raindrops.py</url>
-          <line>73</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/Raindrops.py</url>
-          <line>66</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/Raindrops.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="11" />
+          <line>131</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="12" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -616,7 +601,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#23#54#0" expanded="true" />
-            <element signature="e#190#717#0" expanded="true" />
             <element signature="e#741#1523#0" expanded="true" />
           </folding>
         </state>
@@ -733,32 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plotter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#23#54#0" expanded="true" />
-            <element signature="e#304#731#0" expanded="true" />
-            <element signature="e#2052#2626#0" expanded="true" />
-            <element signature="e#2687#3317#0" expanded="true" />
-            <element signature="e#3351#3774#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="27" />
-          <folding>
-            <element signature="e#23#54#0" expanded="true" />
-            <element signature="e#190#717#0" expanded="true" />
-            <element signature="e#741#1523#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/_bootlocale.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -775,16 +733,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#54#0" expanded="true" />
+            <element signature="e#741#1523#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plotter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#54#0" expanded="true" />
+            <element signature="e#777#913#0" expanded="true" />
+            <element signature="e#2052#2626#0" expanded="true" />
+            <element signature="e#2687#3317#0" expanded="true" />
+            <element signature="e#3351#3774#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Raindrops.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5343602">
-          <caret line="75" column="23" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.3127962">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
             <element signature="e#1#144#1" expanded="true" />
             <element signature="e#145#163#0" expanded="true" />
-            <element signature="e#354#670#0" expanded="true" />
-            <element signature="e#694#1476#0" expanded="true" />
-            <element signature="e#2571#3488#0" expanded="true" />
+            <element signature="e#376#692#0" expanded="true" />
+            <element signature="e#716#1498#0" expanded="true" />
+            <element signature="e#3010#4400#0" expanded="true" />
           </folding>
         </state>
       </provider>
