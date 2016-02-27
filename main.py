@@ -5,6 +5,9 @@ import sys, getopt
 import numpy as np
 from LED import LED
 
+
+
+
 def parse(infilePath, outfilePath, scale):
     with open(infilePath) as infile:
         lines = infile.readlines()
@@ -29,11 +32,18 @@ def parse(infilePath, outfilePath, scale):
     colors = np.random.rand(N)
     area = np.pi * (15 * np.random.rand(N))**2  # 0 to 15 point radiuses
 
-    plt.scatter(x1, y1)
+    fig, ax = plt.subplots()  #create figure and axes
+    ax.set_aspect('equal')
+    ax.set_xlim(0, 100)
+    ax.set_ylim(0, 100)
+
+    ax.scatter(x1, y1)
+
+
+    # plt.scatter(x1, y1)
     # plt.scatter(x, y, s=area, c=colors, alpha=0.5)
+
     plt.show()
-
-
 
     return
 
