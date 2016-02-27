@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import sys, getopt
 import numpy as np
 from LED import LED
-import plotter as plotter
+from plotter import Plotter
 
 
 def parse(infilePath, outfilePath, scale):
@@ -19,11 +19,18 @@ def parse(infilePath, outfilePath, scale):
         x, y, rho, phi = ll.strip().split("\t")
         leds.append(LED(x, y, rho, phi))
 
-    for led in leds:
-        print(led.to_string())
+    plotter = Plotter(leds, float(w), float(h))
 
-    plotter.plot_cartesian(leds, [], float(w), float(h))
-    plotter.plot_polar(leds, [], float(w), float(h))
+    colors = np.random.rand(181)
+    plotter.update_plot(colors)
+
+
+
+    #plotter.start()
+
+
+    #plotter.plot_cartesian(leds, [], float(w), float(h))
+    #plotter.plot_polar(leds, [], float(w), float(h))
 
     return
 

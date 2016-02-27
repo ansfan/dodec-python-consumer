@@ -5,6 +5,8 @@ class LED(object):
     y   = 0.0
     rho = 0.0
     phi = 0.0
+    color = 0.0
+    area  = 300.0
 
     # The class "constructor" - It's actually an initializer
     def __init__(self, x, y, rho, phi):
