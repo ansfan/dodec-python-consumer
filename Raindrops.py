@@ -13,10 +13,62 @@ from matplotlib.animation import FuncAnimation
 import sys, getopt
 from LED import LED
 import colorsys as cs
+import serial
+from struct import *
+from threading import Thread, Lock
 
 
-leds = []
+class Globals(object):
+    colors = []
+
+    def __init__(self):
+        return
+
+
+NUM_LEDS = 181
+COLOR_BYTES = 3
+
+leds   = []
 window = []
+
+globals = Globals()
+
+i = 0
+while (i < NUM_LEDS):
+    globals.colors.append(cs.hsv_to_rgb(0 / 255, 1.0, 1.0))
+    i += 1
+
+
+ser = serial.Serial(
+    port='/dev/ttyS1',
+    baudrate=9600,
+    stopbits=serial.STOPBITS_TWO,
+    bytesize=serial.EIGHTBITS,
+    rtscts=True,
+    dsrdtr=True
+)
+
+# mutex = Lock()
+# last_received = ''
+# def receiving(ser, colors):
+#     global last_received
+#     buffer = []
+#
+#     while True:
+#         while ser.inWaiting() > 0:
+#             # line = ser.readline()
+#             #
+#             # string = line.decode()
+#             #
+#             # hexStrArray = string.strip().split(" ")
+#
+#             mutex.acquire()
+#
+#             colors.colors = ser.read(NUM_LEDS * COLOR_BYTES)
+#
+#             mutex.release()
+
+
 
 def parse(infilePath, outfilePath, scale):
     with open(infilePath) as infile:
@@ -64,9 +116,20 @@ def main(argv):
 
 
 
+
 if __name__ == "__main__":
     main(sys.argv[1:])
 
+    # ser = serial.Serial(
+    #     port='/dev/ttyS1',
+    #     baudrate=9600,
+    #     stopbits=serial.STOPBITS_TWO,
+    #     bytesize=serial.EIGHTBITS,
+    #     rtscts=True,
+    #     dsrdtr=True
+    # )
+
+    # Thread(target=receiving, args=(ser, colors, )).start()
 
 
 
@@ -97,36 +160,36 @@ rain_drops['growth'] = np.random.uniform(50, 200, n_drops)
 x_data = [led.x for led in leds]
 y_data = [led.y for led in leds]
 area   = [led.area for led in leds]
-colors = np.random.rand(len(leds))
 
 
 # Construct the scatter which we will update during animation
 # as the raindrops develop.
 scat = ax.scatter(x_data, y_data,
-                  s=area)#, lw=0.5,
+                  s=area, alpha=1.0)#, lw=0.5,
                   #facecolors=colors)
 # scat = ax.scatter(rain_drops['position'][:, 0], rain_drops['position'][:, 1],
 #                   s=rain_drops['size'], lw=0.5, edgecolors=rain_drops['color'],
 #                   facecolors='none')
 
+printStrs = ["r: ", "g: ", "b: ", "a: "]
 
 def update(frame_number):
     # Get an index which we can use to re-spawn the oldest raindrop.
-    current_index = frame_number % n_drops
+    current_index = frame_number % len(leds)
 
-    startingHue = frame_number % 255
-    colors = []
+    # startingHue = frame_number % 255
+    # colors = []
+    #
+    # i = 0
+    # while (i < len(leds)):
+    #     hue = startingHue if startingHue < 255 else startingHue - 255
+    #     # r,g,b = cs.hsv_to_rgb(hue / 255)
+    #     # rgba = [r, g, b, 1.0]
+    #     colors.append(cs.hsv_to_rgb(hue / 255, 1.0, 1.0))
+    #     startingHue += 1
+    #     i += 1
 
-    i = 0
-    while (i < len(leds)):
-        hue = startingHue if startingHue < 255 else startingHue - 255
-        # r,g,b = cs.hsv_to_rgb(hue / 255)
-        # rgba = [r, g, b, 1.0]
-        colors.append(cs.hsv_to_rgb(hue / 255, 1.0, 1.0))
-        startingHue += 1
-        i += 1
-
-    print("here")
+    print("Frame: " + str(frame_number))
 
     # # Make all colors more transparent as time progresses.
     # rain_drops['color'][:, 3] -= 1.0/len(rain_drops)
@@ -148,8 +211,51 @@ def update(frame_number):
     # scat.set_offsets(rain_drops['position'])
 
     # colors = np.random.rand(len(leds))
-    scat.set_facecolors(colors)
 
+    # mutex.acquire()
+
+    # while True:
+    inWaiting = ser.inWaiting
+
+    if ser.inWaiting() > 0:
+        print("We have stuff!!")
+        buffer = ser.read(NUM_LEDS * COLOR_BYTES)
+
+        ser.flush()
+
+        l = len(buffer)
+        arr = unpack(str(l) + 'c', buffer)
+
+        print("length: " + str(l))
+
+        i = 0
+        while (i < COLOR_BYTES):
+            byte = int.from_bytes(arr[i], byteorder='big')
+
+            print(printStrs[i%COLOR_BYTES] + str(byte))
+
+            i += 1
+
+        globals.colors.clear()
+
+        i = 0
+        while (i < NUM_LEDS * COLOR_BYTES):
+            j = 0
+            tuple = []
+            while (j < COLOR_BYTES):
+                tuple.append(int.from_bytes(arr[i+j], byteorder='big') / 255)
+                j += 1
+
+            globals.colors.append(tuple)
+            i += COLOR_BYTES
+
+    else:
+        print("We don't have stuff. :-(")
+
+    #scat.set_facecolors(colors)
+    scat.set_facecolors(globals.colors)
+
+    # mutex.release()
 
 
 
