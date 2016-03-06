@@ -27,6 +27,7 @@ class Globals(object):
 
 NUM_LEDS = 181
 COLOR_BYTES = 3
+BOARDS = 12
 
 leds   = []
 window = []
@@ -75,13 +76,33 @@ def parse(infilePath, outfilePath, scale):
         lines = infile.readlines()
 
     w, h = lines[1].strip().split("\t")
-    window.append(float(w))
-    window.append(float(h))
+    window.append(float(w) * ((BOARDS / 2) if (BOARDS > 1) else 1))
+    window.append(float(h) * (2 if (BOARDS > 1) else 1))
 
     lls  = lines[3:len(lines)]
     for ll in lls:
         x, y, rho, phi = ll.strip().split("\t")
         leds.append(LED(x, y, rho, phi))
+
+    i = 1
+    while(i < BOARDS):
+        j = 0
+        while(j < NUM_LEDS):
+            led = leds[j]
+
+            if (i < BOARDS / 2):
+                x_off = float(w) * i
+
+                leds.append(LED(led.x + x_off, led.y, led.rho, led.phi))
+
+            else:
+                x_off = float(w) * (i - (BOARDS / 2))
+                y_off = (2 * float(h))
+
+                leds.append(LED(led.x + x_off, y_off - led.y, led.rho, led.phi))
+
+            j+=1
+        i+=1
 
     return
 
@@ -134,12 +155,15 @@ if __name__ == "__main__":
 
 
 # Create new Figure and an Axes which fills it.
-# fig = plt.figure(figsize=(7, 7))
+#fig = plt.figure(figsize=(window[0], window[1]))
 # ax = fig.add_axes([0, 0, window[0], window[0]], frameon=True)
+
 fig, ax = plt.subplots()  #create figure and axes
+
+#fig(figsize=(window[0], window[1]))
 ax.set_aspect('equal')
-ax.set_xlim(0, window[0])
-ax.set_ylim(0, window[0])
+ax.set_xlim(0, window[0])# if (window[0] > window[1]) else window[1])
+ax.set_ylim(0, window[1])# if (window[0] > window[1]) else window[1])
 # ax = fig.add_axes([0, 0, 1, 1], frameon=True)
 # ax.set_xlim(0, 1), ax.set_xticks([])
 # ax.set_ylim(0, 1), ax.set_yticks([])
@@ -219,7 +243,7 @@ def update(frame_number):
 
     if ser.inWaiting() > 0:
         print("We have stuff!!")
-        buffer = ser.read(NUM_LEDS * COLOR_BYTES)
+        buffer = ser.read(NUM_LEDS * BOARDS * COLOR_BYTES)
 
         ser.flush()
 
@@ -239,7 +263,7 @@ def update(frame_number):
         globals.colors.clear()
 
         i = 0
-        while (i < NUM_LEDS * COLOR_BYTES):
+        while (i < NUM_LEDS * BOARDS * COLOR_BYTES):
             j = 0
             tuple = []
             while (j < COLOR_BYTES):
